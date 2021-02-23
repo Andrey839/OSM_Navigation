@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">OSM Navigation</string>
+
+    <!-- Permissions -->
+    <string name="permission_rationale">"Это разрешения нужны для работы приложения"</string>
+    <string name="permission_rationale_sitting">"Для включения разрешений нужно вернуться в настройки"</string>
+
+    <!-- Button names -->
+    <string name="name_button_map">Карта</string>
+    <string name="name_button_user_account">Личный кабинет</string>
+    <string name="name_about_info">Информация</string>
+
+    <!-- Start and end Fragment -->
+    <string name="tittle_start_and_end_fragment">Выберите начальную и конечную точку марщрута</string>
+    <string name="start_point">Начало</string>
+    <string name="end_point">Окончание</string>
+    <string name="button_start">В путь!</string>
+    <string name="hint_start_or_end_point">Введите пункт назначения</string>
+    <string name="select_user_location">Моя локация</string>
+
+
+</resources>

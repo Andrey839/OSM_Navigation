@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/v_graph"
+    app:startDestination="@id/startPointAndEndPointFragment">
+
+    <fragment
+        android:id="@+id/startPointAndEndPointFragment"
+        android:name="com.myapp.osmnavigation.selectsSartingPoint.StartPointAndEndPointFragment"
+        android:label="StartPointAndEndPointFragment" >
+        <action
+            android:id="@+id/action_startPointAndEndPointFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.myapp.osmnavigation.mapOSM.MapFragment"
+        android:label="map_fragment"
+        tools:layout="@layout/map_fragment" >
+        <action
+            android:id="@+id/action_mapFragment_to_searchPlacesFragment"
+            app:destination="@id/searchPlacesFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_detailInfoAboutPlaceFragment"
+            app:destination="@id/detailInfoAboutPlaceFragment" />
+        <argument
+            android:name="startPoint"
+            app:argType="string[]" />
+        <argument
+            android:name="endPoint"
+            app:argType="string[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchPlacesFragment"
+        android:name="com.myapp.osmnavigation.search.SearchPlacesFragment"
+        android:label="search_places_fragment"
+        tools:layout="@layout/search_places_fragment" >
+        <action
+            android:id="@+id/action_searchPlacesFragment_to_detailInfoAboutPlaceFragment"
+            app:destination="@id/detailInfoAboutPlaceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailInfoAboutPlaceFragment"
+        android:name="com.myapp.osmnavigation.detailInfo.DetailInfoAboutPlaceFragment"
+        android:label="detail_info_about_place_fragment"
+        tools:layout="@layout/detail_info_about_place_fragment" />
+</navigation>

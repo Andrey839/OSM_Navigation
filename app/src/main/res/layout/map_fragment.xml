@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewMap"
+            type="com.myapp.osmnavigation.mapOSM.MapViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".mapOSM.MapFragment">
+
+        <org.osmdroid.views.MapView
+            android:id="@+id/myMap"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:clickable="true"
+            android:focusable="true" >
+
+        </org.osmdroid.views.MapView>
+
+        <ImageView
+            android:id="@+id/imageSearch"
+            android:layout_marginTop="@dimen/margin_top_end_image_search_stars"
+            android:layout_marginEnd="@dimen/margin_top_end_image_search_stars"
+            android:layout_width="@dimen/width_height_image_search_stars"
+            android:layout_height="@dimen/width_height_image_search_stars"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_search_24" />
+
+        <ImageView
+            android:id="@+id/imageStars"
+            android:layout_marginTop="@dimen/margin_top_end_image_search_stars"
+            android:layout_marginEnd="@dimen/margin_top_end_image_search_stars"
+            android:layout_width="@dimen/width_height_image_search_stars"
+            android:layout_height="@dimen/width_height_image_search_stars"
+            app:layout_constraintTop_toBottomOf="@id/imageSearch"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/star_black_24x24" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/margin_bottom_recycler"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/margin_start_end_recycler"
+            android:layout_marginStart="@dimen/margin_top_end_image_search_stars"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

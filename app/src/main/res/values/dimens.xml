@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_button_start_or_end">10dp</dimen>
+    <dimen name="margin_parent_layout">8dp</dimen>
+    <dimen name="margin_top_element">10dp</dimen>
+    <dimen name="margin_button_start_end_fragment">30dp</dimen>
+    <dimen name="margin_tittle_start_end">100dp</dimen>
+    <dimen name="margin_top_end_image_search_stars">16dp</dimen>
+    <dimen name="width_height_image_search_stars">50dp</dimen>
+    <dimen name="margin_bottom_recycler">20dp</dimen>
+    <dimen name="margin_start_end_recycler">10dp</dimen>
+</resources>
