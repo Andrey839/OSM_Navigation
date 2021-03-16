@@ -83,4 +83,7 @@ dependencies {
     // safe arg
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.3"
     implementation "androidx.navigation:navigation-ui-ktx:2.3.3"
+
+    // Flickr
+    implementation 'com.googlecode.flickrj-android:flickrj-android:2.1.0'
 }

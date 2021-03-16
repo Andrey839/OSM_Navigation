@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewPOIRoad"
+            type="org.osmdroid.bonuspack.location.POI" />
+        <variable
+            name="callbackPOI"
+            type="com.myapp.osmnavigation.adapterRecycler.ListenerCallbackPOI" />
+
+    </data>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/POIMainConstraint"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{()-> callbackPOI.onClick(viewPOIRoad) }">
+
+            <ImageView
+                android:id="@+id/imagePOI"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:set_image="@{viewPOIRoad.mThumbnailPath}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tittlePOI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:set_text="@{viewPOIRoad.mType}"
+                android:textAlignment="center"
+                android:textColor="#070707"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/imagePOI"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textPOI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#323131"
+                app:layout_constraintBottom_toBottomOf="@id/imagePOI"
+                app:layout_constraintStart_toEndOf="@id/imagePOI"
+                app:layout_constraintTop_toBottomOf="@id/tittlePOI"
+                app:set_text="@{viewPOIRoad.mDescription}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewItemSelect"
+            type="org.osmdroid.bonuspack.location.POI" />
+        <variable
+            name="callViewSelect"
+            type="com.myapp.osmnavigation.adapterRecycler.ListenerCallbackPOISelect" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="@{()-> callViewSelect.onClick(viewItemSelect)}"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/imageItemSelect"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:set_image="@{viewItemSelect.mThumbnailPath}"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tittleItemSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="#040404"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/imageItemSelect"
+            app:layout_constraintTop_toTopOf="parent"
+            app:set_text="@{viewItemSelect.mType}" />
+
+        <TextView
+            android:id="@+id/textItemSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#333232"
+            app:layout_constraintStart_toEndOf="@id/imageItemSelect"
+            app:layout_constraintTop_toBottomOf="@id/tittleItemSelect"
+            app:set_text="@{viewItemSelect.mDescription}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

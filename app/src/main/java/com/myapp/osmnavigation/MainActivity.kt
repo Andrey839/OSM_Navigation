@@ -8,14 +8,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.fragment.NavHostFragment
 import com.myapp.osmnavigation.databinding.ActivityMainBinding
 import com.myapp.osmnavigation.serviceLocation.MyServiceLocation
 import com.myapp.osmnavigation.util.Const
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener
-import net.yslibrary.android.keyboardvisibilityevent.Unregistrar
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 
@@ -25,7 +22,7 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main, )
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         requestPermissions()
 
@@ -54,7 +51,7 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
 
     // запрос разрешения
     private fun requestPermissions() {
-        if (requestPermission()) {
+        if (requestPermissionLocation()) {
             //запускаем сервис по поиску местоположения
             startService(Intent(this, MyServiceLocation::class.java))
         } else {
@@ -65,14 +62,38 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
                 Manifest.permission.ACCESS_FINE_LOCATION
             )
         }
+        if (!requestPermissionExternalStorageRead()) {
+            EasyPermissions.requestPermissions(
+                this,
+                getString(R.string.rationale_permission_read_external),
+                Const.PERMISSION_NUMBER_READ_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+        }
+        if (!requestPermissionExternalStorageWrite()) {
+            EasyPermissions.requestPermissions(
+                this,
+                getString(R.string.rationale_permission_read_external),
+                Const.PERMISSION_NUMBER_WRITE_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
+        }
     }
 
     // проверка давал ражрешение пользователь?
-    private fun requestPermission(): Boolean {
+    private fun requestPermissionLocation(): Boolean {
         return EasyPermissions.hasPermissions(
             this,
             Manifest.permission.ACCESS_FINE_LOCATION
         )
+    }
+
+    private fun requestPermissionExternalStorageWrite(): Boolean {
+        return EasyPermissions.hasPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    }
+
+    private fun requestPermissionExternalStorageRead(): Boolean {
+        return EasyPermissions.hasPermissions(this, Manifest.permission.READ_EXTERNAL_STORAGE)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -91,7 +112,7 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
     override fun onResume() {
         super.onResume()
         KeyboardVisibilityEvent.setEventListener(this) {
-            if (it){
+            if (it) {
                 binding.myMap.visibility = View.GONE
                 binding.userAccount.visibility = View.GONE
                 binding.aboutInfo.visibility = View.GONE

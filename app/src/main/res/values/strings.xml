@@ -4,7 +4,7 @@
     <!-- Permissions -->
     <string name="permission_rationale">"Это разрешения нужны для работы приложения"</string>
     <string name="permission_rationale_sitting">"Для включения разрешений нужно вернуться в настройки"</string>
-
+    <string name="rationale_permission_read_external">Это разрешение нужно для отображения карты</string>
     <!-- Button names -->
     <string name="name_button_map">Карта</string>
     <string name="name_button_user_account">Личный кабинет</string>
@@ -17,6 +17,17 @@
     <string name="button_start">В путь!</string>
     <string name="hint_start_or_end_point">Введите пункт назначения</string>
     <string name="select_user_location">Моя локация</string>
+    <string name="start_position">Начальная точка</string>
+    <string name="end_position">Конечная точка</string>
+
+    <!-- Map Fragment -->
+    <string name="my_location">Моё местоположение</string>
+
+    <!-- Flickr key -->
+    <string name="key_flickr">6d62c301b2bbbebbf3d9a26c88094c33</string>
+    <string name="secret_flickr">a80df6352f911c90</string>
+    <string name="geo_names">andi839</string>
+    <string name="key_auth_flickr">auth-72157718470249617</string>
 
 
 </resources>

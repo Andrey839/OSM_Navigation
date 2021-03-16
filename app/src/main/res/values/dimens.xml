@@ -7,6 +7,6 @@
     <dimen name="margin_tittle_start_end">100dp</dimen>
     <dimen name="margin_top_end_image_search_stars">16dp</dimen>
     <dimen name="width_height_image_search_stars">50dp</dimen>
-    <dimen name="margin_bottom_recycler">20dp</dimen>
+    <dimen name="margin_bottom_recycler">60dp</dimen>
     <dimen name="margin_start_end_recycler">10dp</dimen>
 </resources>

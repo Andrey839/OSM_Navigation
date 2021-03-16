@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_searchPlacesFragment_to_detailInfoAboutPlaceFragment"
             app:destination="@id/detailInfoAboutPlaceFragment" />
+        <argument
+            android:name="listRoad"
+            app:argType="org.osmdroid.bonuspack.routing.Road" />
     </fragment>
     <fragment
         android:id="@+id/detailInfoAboutPlaceFragment"

@@ -35,7 +35,7 @@ class StartPointAndEndPointFragment : Fragment() {
     private lateinit var startPoint: Array<String>
     private lateinit var endPoint: Array<String>
     private var userLocation: Location? = null
-    private lateinit var country: String
+    private var country = ""
     private lateinit var binding: StartPointAndEndPointFragmentBinding
     private lateinit var myScope: CoroutineScope
     private val job = Job()
@@ -65,14 +65,14 @@ class StartPointAndEndPointFragment : Fragment() {
         myAdapterResults = AdapterResultSearch(arrayListOf(), ListenerCallbackTouch {
             if (startPointInput && !endPointInput) {
                 startPoint =
-                    arrayOf(it.lat, it.lon)
+                    arrayOf(it.lat,it.name, it.lon)
                 binding.editTextStart.setText(it.name, TextView.BufferType.EDITABLE)
                 binding.listStart.adapter = null
                 binding.linearEndPoint.visibility = View.VISIBLE
                 binding.listEnd.visibility = View.VISIBLE
                 binding.buttonSendPoints.visibility = View.VISIBLE
             } else {
-                endPoint = arrayOf(it.lat, it.lon)
+                endPoint = arrayOf(it.lat,it.name, it.lon)
                 binding.editTextEnd.setText(it.name, TextView.BufferType.EDITABLE)
                 binding.buttonSendPoints.visibility = View.VISIBLE
             }
@@ -87,10 +87,10 @@ class StartPointAndEndPointFragment : Fragment() {
                     if (intent?.getParcelableExtra<Location>(Const.KEY_LAT_LNG) != null) {
                         userLocation =
                             intent.getParcelableExtra(Const.KEY_LAT_LNG) as Location
-
-                        myScope.launch {
+                        if (country.isEmpty()) myScope.launch {
                             viewModel.getPlaceWithLocationUser(userLocation!!)
                         }
+
                     }
                 }
             }
@@ -114,8 +114,6 @@ class StartPointAndEndPointFragment : Fragment() {
         binding.viewStartAndEndPoint = viewModel
 // узнаём название страны
         viewModel.placesUser.observe(viewLifecycleOwner, {
-            Log.e("tyi", "country ${it.features.first().properties?.address?.country}")
-            Log.e("tyi", "icon ${it.features.first().properties?.icon}")
             country = it.features.first().properties?.address?.country ?: ""
         })
 // по нажатию на иконку добавить свою локацию, записываем её в переменную и и добавляем надпись в поле начальной точки
@@ -135,6 +133,7 @@ class StartPointAndEndPointFragment : Fragment() {
                         endPoint
                     )
                 )
+
         }
 // слушаем клавиатуру
         activity?.let { active ->

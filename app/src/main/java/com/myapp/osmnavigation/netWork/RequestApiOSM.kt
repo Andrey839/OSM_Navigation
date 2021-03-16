@@ -30,6 +30,28 @@ interface RequestApiOSM {
         @Query("addressdetails") addressdetails: String,
         @Query("country") country: String
     ): List<SearchAddress>
+
+    // запрос для Flickr API
+    @GET(Const.URL_FLICKR_PHOTO)
+    suspend fun getPhotoFlickrPlace(
+        @Query("method") method: String,
+        @Query("api_key") api_key: String,
+        @Query("lat") lat: String,
+        @Query("lon") lon :String,
+        @Query("page") page: String,
+        @Query("format") format: String,
+        @Query("nojsoncallback") nojsoncallback: String
+    ): PhotosContainer
+
+    // wikipedia
+    @GET(Const.URL_WIKIPEDIA_SEARCH_JSON_LOCATION)
+    suspend fun getWikipediaPlace(
+        @Query("lang") lang: String,
+        @Query("lat") lat: String,
+        @Query("lng") lng: String,
+        @Query("radius") radius: Int,
+        @Query("username") username: String
+    ): ContainerWikipedia
 }
 
 
